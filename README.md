@@ -1,77 +1,71 @@
-# Mafia
-Multiplayer Social Deduction game
+# Midnight Machinations
 
-## Getting Started
-First, download and enter the [git](https://git-scm.com/) repository:
+Midnight Machinations is a browser-based multiplayer social deduction game. The Rust server owns live room and game state. The SvelteKit client provides the game UI and a prerendered, searchable wiki.
+
+## Getting started
+
+Clone the repository and enter the workspace:
+
 ```bash
-git clone https://www.github.com/mafia-rust/mafia
-cd mafia
+git clone https://github.com/TB516/midnight-machinations.git
+cd midnight-machinations
 ```
-From here it's recommended to split terminals (If you're using VSCode), or open up a second terminal - one for client and one for server.
+
+Use separate terminals for the client and server while developing.
+
 ## Client setup
-The client uses [Vite](https://vite.dev/) as the build tool and [pnpm](https://pnpm.io/) for package management (pnpm offers better performance and more efficient disk space usage compared to npm).
 
-First, enable pnpm via corepack:
-```bash
-corepack enable
-```
+The client uses TypeScript 6, Svelte 5, SvelteKit, Vite 8, and pnpm. The root `mise.toml` declares the expected Node, pnpm, and Rust versions.
 
-Then enter the client directory, install dependencies, and start the dev server:
+Install the workspace tools and client dependencies:
+
 ```bash
+mise install
 cd client
 pnpm install
+```
+
+Create `client/.env` with the WebSocket server address:
+
+```bash
+VITE_WS_ADDRESS=ws://localhost:9000
+```
+
+Start the development server:
+
+```bash
 pnpm dev
 ```
 
-Alternatively, you can use `pnpm start` which is an alias for `pnpm dev`.
+Validate production changes with:
 
-To build for production:
 ```bash
+pnpm check
 pnpm build
 ```
-## Server setup
-### Install Rust
-Follow the [tutorial](https://www.rust-lang.org/learn/get-started) on the rust website.
-### VScode
-If you're using VSCode, it's recommended to download the following extensions to make working on the project easier:
- - [Rust Analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) - You probably already have this. You definitely need it.
- - [Even Better Toml](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) - Language support for .TOML files
- - [Dependi](https://marketplace.visualstudio.com/items?itemName=fill-labs.dependi) - Helps manage crate versions
- - [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Show error messages inline
- - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - View git blame inline
- - [Spell checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - Spelling corrections
 
-It's also a good idea to install clippy (a linter):
+The home, credits, settings, game-mode, and wiki routes are prerendered. Every wiki article is emitted as a static HTML page. The room browser and lobby use SSR for their initial shell, then hydrate for WebSocket data. Only `/game` disables SSR.
+
+The production build uses SvelteKit's Node adapter and starts with:
+
 ```bash
-rustup component add clippy
-```
-You can make it the default linter using this setting (but you don't need to):
-```json
-"rust-analyzer.check.command": "clippy",
+node build
 ```
 
-### Starting the server
-Enter the server directory and build the project using cargo.
+## Server setup
+
+The Rust toolchain is installed by the earlier `mise install` command.
+
+Build and start the server:
+
 ```bash
 cd server
 cargo build
-```
-Note: If the above step fails, and you are using Linux or WSL, you may need to install OpenSSL first.
-
-You can now start the server backend:
-```bash
 cargo run
 ```
 
-### Production Enviornment
-#### Install
-We have built an install script that automatically pulls all the dependencies.
-Run the following command as the root user
-```bash
-curl -fSsL https://raw.githubusercontent.com/mafia-rust/mafia/main/system/install.sh | sh
-```
+On Linux, the server build may also require the OpenSSL development libraries supplied by the operating system.
 
-#### Update
-```bash
-./mafia/system/update.sh
-```
+## VS Code
+
+The workspace recommends extensions for Svelte, Rust, TOML, dependency management, diagnostics, Git history, and spelling. VS Code will offer them when the repository opens.

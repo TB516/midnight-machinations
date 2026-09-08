@@ -1,0 +1,31 @@
+.custom-select {
+    position: relative; /* Position relative to contain absolute children */
+    overflow: visible;
+    
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.custom-select-options-popover {
+    position: absolute;
+    min-width: max-content;
+    overflow: hidden;
+
+    padding: .13rem .13rem;
+    background-color: var(--secondary-color);
+    border-radius: .25rem;
+    border: .13rem solid var(--primary-border-color);
+}
+.custom-select-options-popover > div > .button {
+    width: 100%;
+}
+.custom-select-options {
+    overflow-y: scroll;
+
+    max-height: 15rem;
+}
+.custom-select-options > div{
+    display: flex;
+    flex-direction: column;
+    min-height: max-content;
+}

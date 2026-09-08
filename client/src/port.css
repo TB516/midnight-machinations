@@ -1,0 +1,146 @@
+/* Layout adaptations for Svelte route boundaries. Colours and controls come from the original index.css. */
+:root {
+  --computer-font: computer-font;
+  --icon-factor: 1;
+  --ink: var(--text-color);
+  --muted: #aaa;
+  --night: var(--background-color);
+  --night-raised: var(--background-color);
+  --panel: var(--background-color);
+  --panel-soft: var(--secondary-color);
+  --line: var(--primary-border-color);
+  --line-bright: var(--primary-border-color);
+  --blood: var(--brand-color);
+  --blood-bright: var(--brand-hover-color);
+  --blood-dark: var(--brand-border-shadow-color);
+  --gold: var(--text-color);
+  --focus: var(--focus-outline-color);
+  --town: #80c080;
+  --mafia: #ff8080;
+  --cult: #b080d0;
+  --fiends: #d09060;
+  --neutral: #ccc;
+  --shadow: none;
+}
+html, body { width: 100%; height: 100%; background: var(--background-color); }
+body[data-accessible-font='true'] { --game-font: game-accessible-font; --computer-font: game-accessible-font; --legible-computer-font: game-accessible-font; --title-font: game-accessible-font; --kira-font: game-accessible-font; --spiral-font: game-accessible-font; --icon-factor: 1.2; }
+.anchor { overflow: auto; }
+.sm { height: 100%; }
+.sm .button { display: inline-block; }
+.route-card { width: 80rem; }
+.route-card-content { width: 100%; max-height: 85dvh; overflow: auto; padding: .5rem; }
+.page-heading { padding: .25rem .5rem; }
+.page-heading h1 { font-size: 1.5rem; }
+.panel-card { background: var(--background-color); border: .13rem solid var(--background-border-color); border-right-color: var(--background-border-shadow-color); border-bottom-color: var(--background-border-shadow-color); border-radius: .4rem; }
+.primary { background: var(--brand-color); border-color: var(--brand-border-color); border-right-color: var(--brand-border-shadow-color); border-bottom-color: var(--brand-border-shadow-color); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.toggle-row { display: flex; gap: .5rem; align-items: center; }
+.status, .notice { padding: .25rem; }
+.error, .error-text, .danger-text { color: #ff8080; }
+.success { color: #80c080; }
+.live-game { height: 100dvh; }
+.credits-grid { display: flex; flex-direction: column; align-items: center; overflow: auto; }
+.credits-grid section { margin: 2rem 0 .5rem; }
+.credits-grid h2 { font-size: 1.17rem; margin-bottom: .5rem; }
+.credits-grid ul { list-style: none; line-height: 1.5rem; }
+.credits-back { display: block; width: fit-content; margin: 1rem auto 0; }
+
+.chat-panel, .chat-card, [data-menu="chat"] {
+
+    --fade-color: #161b34;
+
+    --primary-color: #1c244e;
+    --secondary-color: #232754;
+    --text-color: #ffffff;
+
+    --primary-border-color: #3c4675;
+    --primary-border-shadow-color: #111836;
+
+    --hover-color: #232c57;
+    --focus-outline-color: #929ccc;
+
+
+    --background-color: #151a41;
+    --background-border-color: #2b3162;
+    --background-border-shadow-color: #0e1024;
+
+    --primary-color: #1c244e;
+    --secondary-color: #232754;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}
+.players-panel, [data-menu="players"] {
+    --background-color: #182c28;
+    --fade-color: #0b1511;
+    --primary-color: #1a3531;
+    --secondary-color: #1f3a35;
+    --text-color: #ffffff;
+    --primary-border-color: #2e5952;
+    --primary-border-shadow-color: #142523;
+    --background-border-color: #2c4d46;
+    --background-border-shadow-color: #121f1c;
+    --hover-color: #1f403b;
+    --focus-outline-color: #84a997;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}
+.notes-panel, [data-menu="notes"] {
+    --background-color: #251737;
+    --fade-color: #100b15;
+    --primary-color: #2c1c40;
+    --secondary-color: #332142;
+    --text-color: #ffffff;
+    --primary-border-color: #4c3558;
+    --primary-border-shadow-color: #250d2b;
+    --background-border-color: #352d56;
+    --background-border-shadow-color: #110d18;
+    --hover-color: #38254e;
+    --focus-outline-color: #9c84a9;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}
+.abilities-panel, [data-menu="abilities"] {
+    --background-color: #331c26;
+    --fade-color: #150b12;
+    --primary-color: #422031;
+    --secondary-color: #422137;
+    --text-color: #ffffff;
+    --primary-border-color: #5a3246;
+    --primary-border-shadow-color: #25141d;
+    --background-border-color: #50303e;
+    --background-border-shadow-color: #25131c;
+    --hover-color: #4c2337;
+    --focus-outline-color: #a9849c;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}
+.dossier-panel, [data-menu="dossier"] {
+    --background-color: #2c2b3b;
+    --fade-color: #1d1b29;
+    --primary-color: #323142;
+    --secondary-color: #373647;
+    --text-color: #ffffff;
+    --primary-border-color: #49485b;
+    --primary-border-shadow-color: #202027;
+    --background-border-color: #3d3c4d;
+    --background-border-shadow-color: #19181f;
+    --hover-color: #3c3b4d;
+    --focus-outline-color: #9896ae;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}
+.wiki-page, .article-page, .wiki-panel, [data-menu="wiki"] {
+    --background-color: #2C2124;
+    --fade-color: #0F0D15;
+    --primary-color: #3A2A31;
+    --secondary-color: #3A2A31;
+    --text-color: #ffffff;
+    --primary-border-color: #533C44;
+    --primary-border-shadow-color: #261C26;
+    --background-border-color: #493942;
+    --background-border-shadow-color: #201924;
+    --hover-color: #442F35;
+    --focus-outline-color: #A18E99;
+
+  --night: var(--background-color); --night-raised: var(--background-color); --panel: var(--background-color); --panel-soft: var(--secondary-color); --line: var(--primary-border-color); --line-bright: var(--primary-border-color); --ink: var(--text-color);
+}

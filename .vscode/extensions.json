@@ -4,6 +4,7 @@
         "fill-labs.dependi",
         "eamodio.gitlens",
         "rust-lang.rust-analyzer",
+        "svelte.svelte-vscode",
         "usernamehw.errorlens",
         "tamasfe.even-better-toml"
     ]

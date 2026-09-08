@@ -13,7 +13,9 @@ Cargo.lock
 
 #Mafia Client
 # dependencies
+.pnpm-store
 client/node_modules
+client/.svelte-kit
 client/.pnp
 client/.pnp.js
 

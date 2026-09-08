@@ -89,6 +89,9 @@ impl SpectatorPointer {
             },
             ToClientPacket::PhaseTimes {
                 phase_time_settings: game.settings.phase_times.clone()
+            },
+            ToClientPacket::RandomSeed {
+                random_seed: game.settings.random_seed
             }
         ]);
 

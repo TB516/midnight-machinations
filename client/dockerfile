@@ -1,44 +1,37 @@
-# 1) Base with PNPM
-FROM node:23-slim AS base
-# set PNPM_HOME
-ENV PNPM_HOME=/pnpm
+FROM node:24-slim AS base
 
-# add pnpm to PATH
+ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
+
 RUN corepack enable
 
+WORKDIR /app
+
+FROM base AS dependencies
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+FROM dependencies AS build
+
 ARG VITE_WS_ADDRESS=ws://localhost:80
-ENV VITE_WS_ADDRESS=${VITE_WS_ADDRESS}
+ENV VITE_WS_ADDRESS=$VITE_WS_ADDRESS
 
-WORKDIR /app
 COPY . .
+RUN pnpm build
+RUN pnpm prune --prod
 
-# 2) deps: install everything, hoisting peers
-FROM base AS deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --shamefully-hoist
+FROM node:24-slim AS runtime
 
-# 3) build: uses the hoisted deps + disables ESLint
-FROM deps AS build
-RUN pnpm run build
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-# 4) prod-deps: slim down to only prod deps
-FROM deps AS prod-deps
-RUN rm -rf node_modules \
-    && pnpm install --prod --frozen-lockfile
-
-# 5) final runtime
-FROM node:23-slim
 WORKDIR /app
-COPY --from=prod-deps /app/node_modules ./node_modules
-COPY --from=build    /app/build        ./build
 
+COPY --from=build /app/build ./build
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json ./package.json
 
-RUN npm install -g serve
-CMD ["serve", "-s", "build", "-l", "3000"]
-
-
-
-# docker build -f dockerfile --build-arg VITE_WS_ADDRESS=ws://localhost:80 -t midnightmachinations-client .
-# docker run -p 3000:3000  midnightmachinations-client
-# wss://wss.midnightmachinations.net
+EXPOSE 3000
+CMD ["node", "build"]

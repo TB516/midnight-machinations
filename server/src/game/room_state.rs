@@ -100,7 +100,6 @@ impl RoomState for Game {
             match client.client_location {
                 GameClientLocation::Player(player) => {
                     player.connect(self, send.clone());
-                    player.send_join_game_data(self);
                 },
                 GameClientLocation::Spectator(spectator) => {
                     spectator.send_join_game_data(self);
@@ -228,4 +227,3 @@ impl RoomState for Game {
         }
     }
 }
-

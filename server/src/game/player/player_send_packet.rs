@@ -62,6 +62,12 @@ impl PlayerReference{
             ToClientPacket::ModifierSettings {
                 modifier_settings: game.modifier_settings().clone()
             },
+            ToClientPacket::PhaseTimes {
+                phase_time_settings: game.settings.phase_times.clone()
+            },
+            ToClientPacket::RandomSeed {
+                random_seed: game.settings.random_seed
+            },
             ToClientPacket::PlayerAlive{
                 alive: PlayerReference::all_players(game).map(|p|p.alive(game)).collect()
             }
@@ -109,8 +115,14 @@ impl PlayerReference{
             ToClientPacket::YourNotes{
                 notes: self.notes(game).clone()
             },
+            ToClientPacket::YourCallingCard {
+                calling_card: self.calling_card(game).clone()
+            },
             ToClientPacket::YourCrossedOutOutlines{
                 crossed_out_outlines: self.crossed_out_outlines(game).clone()
+            },
+            ToClientPacket::YourVoteFastForwardPhase {
+                fast_forward: self.fast_forward_vote(game)
             },
             ToClientPacket::Phase { 
                 phase: game.current_phase().clone(),
@@ -147,4 +159,3 @@ impl PlayerReference{
         self.send_chat_messages(game);
     }
 }
-

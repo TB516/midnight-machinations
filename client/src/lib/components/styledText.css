@@ -1,0 +1,166 @@
+.keyword-link {
+    font: inherit;
+    color: inherit;
+}
+.keyword-link:hover {
+    text-decoration: underline;
+}
+.keyword-player-number {
+	border-radius: 1em;
+    border: solid .13rem;
+    border-bottom-color: darkgray;
+    border-right-color: darkgray;
+    background-color: var(--primary-color);
+    display: inline-block;
+    height: 1em;
+    padding: 0.1em 0.35em 1.2em;
+    font-size: 0.8em;
+    text-indent: 0;
+    text-align: center !important;
+}
+.keyword-outline-number {
+	border-radius: 0.5em;
+    border: solid .13rem;
+    border-bottom-color: darkgray;
+    border-right-color: darkgray;
+    background-color: var(--primary-color);
+    display: inline-block;
+    height: 1em;
+    padding: 0.1em 0.35em 1.2em;
+    font-size: 0.8em;
+    text-indent: 0;
+    text-align: center !important;
+    margin: 0 0 0 0
+}
+.keyword-player-sender {
+    color: rgb(168, 168, 168);
+    font-style: italic; 
+    font-weight: bold;
+}
+.keyword-player-important {
+    border-bottom-color: darkgoldenrod;
+    border-right-color: darkgoldenrod;
+    color: yellow;
+}
+.keyword-player {
+    color: whitesmoke;
+    font-style: italic; 
+    font-weight: bold;
+}
+.keyword-outline.keyword-outline {
+    display: inline;
+}
+.keyword-evil {
+    color: red;
+}
+.keyword-good {
+    color: lime;
+}
+.keyword-neutral {
+    color: rgb(255, 200, 252);
+}
+.keyword-minions {
+    color: rgb(163, 71, 255);
+}
+.keyword-fiends {
+    color: orange;
+}
+.keyword-cult {
+    color: rgb(255, 64, 128);
+}
+.keyword-info {
+    color: lightblue;
+}
+.keyword-hiddenRole {
+    color: whitesmoke;
+    font-style: italic;
+    font-weight: bold;
+}
+.keyword-abstain {
+    color: cyan;
+}
+.keyword-dead {
+    font-style: italic;
+    color: gray;
+}
+.keyword-dead .keyword-player {
+    color: rgb(168, 168, 168);
+}
+.keyword-pride, .keyword-trans, .keyword-christmas {
+    background-clip: text;
+    color: rgba(255,255,255,.2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255,255,255,.2);
+    text-shadow: none;
+    filter: drop-shadow(.1rem .1rem .1rem rgb(0, 0, 0));
+}
+.keyword-pride {
+    background-image: linear-gradient(to left, red, violet, rgb(103, 0, 177), rgb(0, 202, 202), green, rgb(216, 216, 0), orange, red);
+    background-size: 6em;
+    animation: scrolling-rainbow 3s linear infinite;
+    filter: drop-shadow(-.05rem -.05rem .1rem #ffffff88)
+            drop-shadow(.1rem .1rem .1rem rgb(0, 0, 0));
+}
+.keyword-christmas {
+    --spiral-color: #ff817e;
+    --spiral-shine: #FF615D;
+    --spiral-background-color: #ffdcdc;
+    background-image: repeating-linear-gradient(115deg,
+        var(--spiral-color) 0em, var(--spiral-color) 0.55em, 
+        var(--spiral-background-color) 0.55em, var(--spiral-background-color) 1.10em
+    );
+    animation: scrolling-rainbow 3s linear infinite;
+    background-size: 6em;
+    font-weight: bold;
+    filter: drop-shadow(0 0 .2em var(--spiral-shine))
+            drop-shadow(.1rem .1rem .1rem rgb(0, 0, 0));
+}
+.keyword-christmas.keyword-naughty {
+    --spiral-color: #47a850;
+    --spiral-background-color: #a4e6a4;
+}
+.keyword-title {
+    font-family: var(--title-font), 'Roboto', sans-serif;
+}
+.keyword-kira {
+    font-family: var(--kira-font, Arial);
+}
+.keyword-spiral {
+    font-family: var(--spiral-font, Arial);
+    line-height: 1em;
+    letter-spacing: 0.1em;
+}
+.keyword-trans {
+    background-image: linear-gradient(to left, cyan, pink, white, pink, cyan);
+}
+.keyword-disabled * {
+    color: gray;
+    background-clip: unset;
+    background-image: unset;
+    background-size: unset;
+    animation: none;
+    -webkit-text-fill-color: unset;
+    text-shadow: none;
+    filter: none;
+}
+@keyframes scrolling-rainbow {
+    0% {
+        background-position: 0;
+    }
+    50% {
+        background-position: 3em;
+    }
+    100% {
+        background-position: 6em;
+    }
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    80% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
+}

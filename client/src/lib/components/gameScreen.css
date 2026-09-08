@@ -1,0 +1,94 @@
+.game-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-screen > .menu-buttons > button {
+    padding: 0.5rem;
+    font-size: 1.5em;
+    aspect-ratio: 1/1;
+}
+
+.game-screen > .leave-button {
+    position: absolute;
+    margin: 0;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
+.game-screen .header {
+    height: fit-content;
+
+    flex-grow: 0;
+    flex-basis: 0px;
+}
+
+.game-screen .content {
+    height: 1vh;
+}
+.game-screen .content > div > div{
+    height: 100%;
+    max-height: 100%;
+    
+    background-color: var(--background-color);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.game-screen .content > .panel-handle[data-resize-handle-state="hover"],
+.game-screen .content > .panel-handle[data-resize-handle-state="drag"] {
+    outline: .065rem solid var(--focus-outline-color);
+    z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+    .game-screen .content > div > div {
+        width: 100%;
+        resize: none;
+    }
+}
+
+.game-screen .content .no-content {
+    display: flex;
+    resize: none;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+}
+
+.content-tab {
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    border-bottom: .13rem solid var(--background-border-shadow-color);
+    width: 100%;
+    margin: 0;
+    padding: .25rem .5rem;
+    background-color: var(--background-color);
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    position: relative;
+}
+.content-tab > button {
+    width: max-content;
+    margin: 0 .30rem;
+    padding: 0;
+    height: 1.2em;
+}
+.content-tab > button > .icon-small {
+    vertical-align: super;
+}
+.content-tab > .close {
+    position: absolute;
+    right: 0;
+}
+.content-tab > .help {
+    position: absolute;
+    left: 0;
+}

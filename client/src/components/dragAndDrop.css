@@ -1,9 +1,0 @@
-.draggable {
-    cursor: grab;
-    touch-action: none;
-}
-
-.dragged {
-    opacity: 40%;
-    border-style: dashed;
-}
